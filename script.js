@@ -12,10 +12,9 @@ function showSlide(index) {
             slide.classList.add('active');
         }
     });
-    document.querySelector('.carousel').style.transform = `translateX(-${index * 100}%)`;
+    document.querySelector('.carousel').style.transform = `translateX(-${index * 50}%)`; // aqui que tem a rolagem
 }
 
-// Funções de navegação para as setas next e prev
 document.querySelector('.next').addEventListener('click', () => {
     currentIndex = (currentIndex + 1) % totalItems;
     showSlide(currentIndex);
@@ -26,5 +25,4 @@ document.querySelector('.prev').addEventListener('click', () => {
     showSlide(currentIndex);
 });
 
-// Inicializa o carrossel na segunda imagem
 showSlide(currentIndex);

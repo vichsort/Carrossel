@@ -1,4 +1,3 @@
-/* Estilos Gerais */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,10 +10,8 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
-    background-color: #000;
 }
 
-/* Container Externo */
 .out-container {
     background-color: #000;
     padding: 40px;
@@ -23,12 +20,11 @@ body {
     justify-content: center;
 }
 
-/* Estilos do Carrossel */
 .carousel-container {
     position: relative;
     overflow: hidden;
     width: 70%;
-    aspect-ratio: 16 / 8;
+    aspect-ratio: 16 / 9;
 }
 
 .carousel {
@@ -37,11 +33,16 @@ body {
     position: relative;
 }
 
-/* Estilos para os Itens do Carrossel */
 .carousel-item {
     position: relative;
-    min-width: 100%;
+    width: 100%;
     text-align: center;
+    opacity: 0.5;
+    transition: opacity 0.5s ease;
+}
+
+.carousel-item.active {
+    opacity: 1;
 }
 
 .carousel img {
@@ -50,19 +51,6 @@ body {
     object-fit: cover;
 }
 
-/* Efeito de Opacidade e Degradê nas Imagens Laterais */
-.carousel-item:not(.active) {
-    opacity: 0.3;
-    filter: grayscale(100%);
-    transition: opacity 0.5s ease, filter 0.5s ease;
-}
-
-.carousel-item.active {
-    opacity: 1;
-    filter: grayscale(0);
-}
-
-/* Estilos da Descrição do Carrossel */
 .carousel-description {
     position: absolute;
     bottom: 20px;
@@ -83,19 +71,17 @@ body {
     line-height: 1.5;
 }
 
-/* Estilos das Setas de Navegação */
 .prev, .next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    background: none;
     color: #ffffff;
     border: none;
     cursor: pointer;
-    font-size: 2em;
+    font-size: 24px;
     font-weight: bold;
     z-index: 10;
-    padding: 10px;
 }
 
 .prev {
@@ -106,7 +92,13 @@ body {
     right: 10px;
 }
 
-.prev:hover, .next:hover {
-    color: #cccccc;
-    background-color: rgba(0, 0, 0, 0.7);
+.carousel-item:not(.active)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    z-index: 1;
 }
