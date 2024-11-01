@@ -1,8 +1,8 @@
-// #1 Seleção dos elementos do carrossel
+// Seleção dos elementos do carrossel
 const carousel = document.querySelector('.carousel');
 const items = document.querySelectorAll('.carousel-item');
 const totalItems = items.length;
-let currentIndex = 1; // #5 Iniciar no segundo item
+let currentIndex = 1; // Inicia no segundo item
 
 function showSlide(index) {
     const slides = document.querySelectorAll('.carousel-item');
@@ -15,16 +15,14 @@ function showSlide(index) {
     document.querySelector('.carousel').style.transform = `translateX(-${index * 100}%)`;
 }
 
-// #8 Funções de navegação para as setas next e prev
+// Funções de navegação para as setas next e prev
 document.querySelector('.next').addEventListener('click', () => {
-    const slides = document.querySelectorAll('.carousel-item');
-    currentIndex = (currentIndex + 1) % slides.length;
+    currentIndex = (currentIndex + 1) % totalItems;
     showSlide(currentIndex);
 });
 
 document.querySelector('.prev').addEventListener('click', () => {
-    const slides = document.querySelectorAll('.carousel-item');
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    currentIndex = (currentIndex - 1 + totalItems) % totalItems;
     showSlide(currentIndex);
 });
 

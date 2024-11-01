@@ -14,7 +14,7 @@ body {
     background-color: #000;
 }
 
-/* Container externo com fundo preto */
+/* Container Externo */
 .out-container {
     background-color: #000;
     padding: 40px;
@@ -23,26 +23,36 @@ body {
     justify-content: center;
 }
 
-/* Estilos do carrossel */
+/* Estilos do Carrossel */
 .carousel-container {
     position: relative;
     overflow: hidden;
     width: 70%;
-    max-width: 1000px; /* Limita o tamanho máximo do carrossel */
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 8;
 }
 
 .carousel {
     display: flex;
     transition: transform 0.5s ease;
+    position: relative;
 }
 
-/* Estilos para o conteúdo do card */
+/* Estilos para os Itens do Carrossel */
 .carousel-item {
     position: relative;
     min-width: 100%;
     text-align: center;
-    opacity: 0.5;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Efeito de Opacidade e Degradê nas Imagens Laterais */
+.carousel-item:not(.active) {
+    opacity: 0.3;
     filter: grayscale(100%);
     transition: opacity 0.5s ease, filter 0.5s ease;
 }
@@ -52,13 +62,7 @@ body {
     filter: grayscale(0);
 }
 
-.carousel img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Estilos para a descrição sobre a imagem */
+/* Estilos da Descrição do Carrossel */
 .carousel-description {
     position: absolute;
     bottom: 20px;
@@ -79,46 +83,30 @@ body {
     line-height: 1.5;
 }
 
-/* Estilização das setas next e prev */
+/* Estilos das Setas de Navegação */
 .prev, .next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: none;
+    background-color: rgba(0, 0, 0, 0.5);
     color: #ffffff;
     border: none;
-    padding: 0;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 2em;
     font-weight: bold;
-    outline: none;
-    z-index: 1; /* Garante que as setas fiquem acima das imagens */
+    z-index: 10;
+    padding: 10px;
 }
 
 .prev {
-    left: -40px; /* Posiciona a seta para fora do container */
+    left: 10px;
 }
 
 .next {
-    right: -40px; /* Posiciona a seta para fora do container */
+    right: 10px;
 }
 
 .prev:hover, .next:hover {
     color: #cccccc;
-}
-
-/* Exibe as imagens laterais com um efeito de degradê */
-.carousel-item:not(.active) {
-    opacity: 0.3;
-    filter: blur(2px);
-}
-
-.carousel-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    background-color: rgba(0, 0, 0, 0.7);
 }
